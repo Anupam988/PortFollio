@@ -1,0 +1,60 @@
+import { useEffect, useState } from 'react'
+import { navLinks, profile } from '../data/content'
+import { MenuIcon, CloseIcon } from './Icons'
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const initials = profile.name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
+
+  return (
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+      <a href="#home" className="nav-logo" onClick={() => setOpen(false)}>
+        {initials}
+        <span>.</span>dev
+      </a>
+
+      <button
+        type="button"
+        className="nav-toggle"
+        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
+        {open ? <CloseIcon /> : <MenuIcon />}
+      </button>
+
+      <ul className={`nav-links${open ? ' open' : ''}`}>
+        {navLinks.map((link) => (
+          <li key={link.href}>
+            <a href={link.href} onClick={() => setOpen(false)}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a
+            href="#contact"
+            className="btn btn-primary nav-cta"
+            onClick={() => setOpen(false)}
+          >
+            Hire me
+          </a>
+        </li>
+      </ul>
+    </nav>
+  )
+}
