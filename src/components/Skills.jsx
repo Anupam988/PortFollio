@@ -1,7 +1,6 @@
 import { useReveal } from '../hooks/useReveal'
-import { skills } from '../data/content'
 
-export default function Skills() {
+export default function Skills({ skills }) {
   const ref = useReveal()
 
   return (

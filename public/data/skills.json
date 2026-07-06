@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Frontend",
+    "items": ["React", "Next.js", "TypeScript", "Vite", "Tailwind", "Three.js"]
+  },
+  {
+    "title": "Backend",
+    "items": ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST", "GraphQL"]
+  },
+  {
+    "title": "Tools & DevOps",
+    "items": ["Git", "Docker", "CI/CD", "AWS", "Vercel", "Linux"]
+  },
+  {
+    "title": "Practices",
+    "items": ["Testing", "Accessibility", "Agile", "Performance", "Design Systems"]
+  }
+]

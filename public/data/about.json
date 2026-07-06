@@ -1,0 +1,15 @@
+{
+  "lead": "I'm a developer who loves turning complex problems into simple, elegant interfaces.",
+  "paragraphs": [
+    "With a background spanning front-end and back-end development, I focus on writing clean, maintainable code and shipping products people actually enjoy using.",
+    "When I'm not coding, you'll find me exploring new frameworks, contributing to open source, or over-engineering my personal setup."
+  ],
+  "stats": [
+    { "num": "5+", "label": "Years experience" },
+    { "num": "40+", "label": "Projects shipped" },
+    { "num": "20+", "label": "Happy clients" },
+    { "num": "∞", "label": "Cups of coffee" }
+  ],
+  "image": "/assets/web/about.png",
+  "imageAlt": "Portrait of the developer"
+}

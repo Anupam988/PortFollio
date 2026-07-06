@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { navLinks, profile } from '../data/content'
 import { MenuIcon, CloseIcon } from './Icons'
 
-export default function Navbar() {
+export default function Navbar({ personal }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -13,18 +12,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const initials = profile.name
+  const initials = personal.name
     .split(' ')
     .map((w) => w[0])
     .join('')
     .slice(0, 2)
     .toUpperCase()
 
+  const suffix = (personal.logoSuffix || '.dev').replace(/^\./, '')
+  const navLinks = personal.navLinks || []
+
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <a href="#home" className="nav-logo" onClick={() => setOpen(false)}>
         {initials}
-        <span>.</span>dev
+        <span>.</span>
+        {suffix}
       </a>
 
       <button

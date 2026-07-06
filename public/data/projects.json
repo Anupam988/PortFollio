@@ -1,0 +1,29 @@
+[
+  {
+    "glyph": "{ }",
+    "image": "/assets/projects/project1.png",
+    "title": "Project Alpha",
+    "description": "A real-time collaboration platform with live cursors, presence, and offline sync. Replace with your own project.",
+    "stack": ["React", "Node", "WebSocket", "MongoDB"],
+    "demo": "https://example.com",
+    "repo": "https://github.com/your-username/project-alpha"
+  },
+  {
+    "glyph": "</>",
+    "image": "/assets/projects/project2.png",
+    "title": "Project Beta",
+    "description": "An analytics dashboard turning raw event streams into clear, actionable charts. Replace with your own project.",
+    "stack": ["Next.js", "TypeScript", "PostgreSQL"],
+    "demo": "https://example.com",
+    "repo": "https://github.com/your-username/project-beta"
+  },
+  {
+    "glyph": "#!",
+    "image": "/assets/projects/project3.png",
+    "title": "Project Gamma",
+    "description": "A CLI toolkit that automates repetitive dev workflows and scaffolds projects in seconds. Replace with your own project.",
+    "stack": ["Node", "TypeScript", "Vite"],
+    "demo": "https://example.com",
+    "repo": "https://github.com/your-username/project-gamma"
+  }
+]

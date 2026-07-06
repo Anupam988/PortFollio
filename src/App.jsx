@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { ADMIN_PATH } from './config'
+import { useSiteData } from './data/siteDataContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
+import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -14,6 +16,7 @@ export default function App() {
   const [isAdmin, setIsAdmin] = useState(
     () => window.location.hash === ADMIN_PATH
   )
+  const { data, error } = useSiteData()
 
   useEffect(() => {
     const onHashChange = () =>
@@ -24,17 +27,43 @@ export default function App() {
 
   if (isAdmin) return <Admin />
 
+  if (error) {
+    return (
+      <div className="app-state">
+        <p className="glyph">{'{ ! }'}</p>
+        <h2>Couldn&apos;t load site data</h2>
+        <p>
+          Check that the JSON files in <code>public/data</code> are valid.
+        </p>
+      </div>
+    )
+  }
+
+  if (!data) {
+    return (
+      <div className="app-state">
+        <span className="loader" />
+        <p>Loading…</p>
+      </div>
+    )
+  }
+
   return (
     <>
-      <Navbar />
+      <Navbar personal={data.personal} />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
+        <Hero
+          personal={data.personal}
+          technologies={data.technologies}
+          about={data.about}
+        />
+        <About about={data.about} />
+        <Skills skills={data.skills} />
+        <Experience experience={data.experience} />
+        <Projects projects={data.projects} />
+        <Contact personal={data.personal} />
       </main>
-      <Footer />
+      <Footer personal={data.personal} />
     </>
   )
 }

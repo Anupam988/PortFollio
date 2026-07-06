@@ -1,0 +1,27 @@
+{
+  "name": "Anupam Chakraborty",
+  "logoSuffix": ".dev",
+  "heroImage": "/assets/web/main.jpg",
+  "roles": [
+    "Full-Stack Developer",
+    "React Engineer",
+    "Problem Solver",
+    "Open-Source Contributor"
+  ],
+  "tagline": "I build fast, accessible, and delightful web experiences — from pixel-perfect front-ends to resilient back-end APIs.",
+  "location": "Earth, Remote-friendly",
+  "email": "you@example.com",
+  "socials": {
+    "github": "https://github.com/your-username",
+    "linkedin": "https://www.linkedin.com/in/your-username",
+    "email": "mailto:you@example.com",
+    "whatsapp": "https://wa.me/10000000000"
+  },
+  "navLinks": [
+    { "label": "About", "href": "#about" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Contact", "href": "#contact" }
+  ]
+}

@@ -1,7 +1,6 @@
 import { useReveal } from '../hooks/useReveal'
-import { about } from '../data/content'
 
-export default function About() {
+export default function About({ about }) {
   const ref = useReveal()
 
   return (
@@ -13,7 +12,7 @@ export default function About() {
         </h2>
 
         <div className="about-grid">
-          <div>
+          <div className="about-text">
             <p className="about-lead">{about.lead}</p>
             {about.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
@@ -36,6 +35,7 @@ export default function About() {
           </div>
 
           <div className="about-image">
+            <div className="about-bg" aria-hidden="true" />
             <img src={about.image} alt={about.imageAlt} loading="lazy" />
           </div>
         </div>

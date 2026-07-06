@@ -1,8 +1,7 @@
 import { useReveal } from '../hooks/useReveal'
-import { projects } from '../data/content'
 import { ExternalIcon, CodeIcon } from './Icons'
 
-export default function Projects() {
+export default function Projects({ projects }) {
   const ref = useReveal()
 
   return (
@@ -17,7 +16,11 @@ export default function Projects() {
           {projects.map((p) => (
             <article className="project-card" key={p.title}>
               <div className="project-thumb">
-                <span className="glyph">{p.glyph}</span>
+                {p.image ? (
+                  <img src={p.image} alt={p.title} loading="lazy" />
+                ) : (
+                  <span className="glyph">{p.glyph}</span>
+                )}
               </div>
               <div className="project-body">
                 <h3>{p.title}</h3>

@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
-import { profile, socials } from '../data/content'
 import { saveSubmission } from '../lib/submissions'
 import { GithubIcon, LinkedinIcon, MailIcon, WhatsappIcon } from './Icons'
 
 const initial = { name: '', email: '', message: '' }
 
-export default function Contact() {
+export default function Contact({ personal }) {
   const ref = useReveal()
   const [form, setForm] = useState(initial)
   const [status, setStatus] = useState({ state: 'idle', message: '' })
+  const socials = personal.socials || {}
 
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
@@ -48,19 +48,9 @@ export default function Contact() {
   }
 
   const contactItems = [
-    { icon: <MailIcon />, label: 'Email', value: profile.email, href: socials.email },
-    {
-      icon: <WhatsappIcon />,
-      label: 'WhatsApp',
-      value: 'Message me',
-      href: socials.whatsapp,
-    },
-    {
-      icon: <LinkedinIcon />,
-      label: 'LinkedIn',
-      value: 'Connect',
-      href: socials.linkedin,
-    },
+    { icon: <MailIcon />, label: 'Email', value: personal.email, href: socials.email },
+    { icon: <WhatsappIcon />, label: 'WhatsApp', value: 'Message me', href: socials.whatsapp },
+    { icon: <LinkedinIcon />, label: 'LinkedIn', value: 'Connect', href: socials.linkedin },
     { icon: <GithubIcon />, label: 'GitHub', value: 'Follow', href: socials.github },
   ]
 
@@ -71,21 +61,21 @@ export default function Contact() {
       <div className="container reveal" ref={ref}>
         <p className="section-tag">Contact</p>
         <h2 className="section-title">
-          Let's <span className="gradient-text">build something</span>
+          Let&apos;s <span className="gradient-text">build something</span>
         </h2>
 
         <div className="contact-grid">
           <div className="contact-intro">
             <p>
               Have a project in mind, a question, or just want to say hi? Drop a
-              message and I'll get back to you.
+              message and I&apos;ll get back to you.
             </p>
             <ul className="contact-list">
               {contactItems.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    target={item.href.startsWith('mailto') ? undefined : '_blank'}
+                    target={item.href && item.href.startsWith('mailto') ? undefined : '_blank'}
                     rel="noreferrer"
                   >
                     <span className="ico">{item.icon}</span>
@@ -103,36 +93,19 @@ export default function Contact() {
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="field">
               <label htmlFor="name">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Jane Doe"
-                value={form.name}
-                onChange={handleChange}
-              />
+              <input id="name" name="name" type="text" placeholder="Jane Doe"
+                value={form.name} onChange={handleChange} />
             </div>
             <div className="field">
               <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="jane@example.com"
-                value={form.email}
-                onChange={handleChange}
-              />
+              <input id="email" name="email" type="email" placeholder="jane@example.com"
+                value={form.email} onChange={handleChange} />
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
+              <textarea id="message" name="message" rows="5"
                 placeholder="Tell me about your project..."
-                value={form.message}
-                onChange={handleChange}
-              />
+                value={form.message} onChange={handleChange} />
             </div>
 
             {status.state === 'success' || status.state === 'error' ? (
