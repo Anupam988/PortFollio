@@ -11,6 +11,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Admin from './components/Admin'
+import ScrollTop from './components/ScrollTop'
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(
@@ -64,6 +65,7 @@ export default function App() {
         <Contact personal={data.personal} />
       </main>
       <Footer personal={data.personal} />
+      <ScrollTop />
     </>
   )
 }

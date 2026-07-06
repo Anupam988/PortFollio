@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal'
+import AboutImage from './AboutImage'
 
 export default function About({ about }) {
   const ref = useReveal()
@@ -34,10 +35,7 @@ export default function About({ about }) {
             </div>
           </div>
 
-          <div className="about-image">
-            <div className="about-bg" aria-hidden="true" />
-            <img src={about.image} alt={about.imageAlt} loading="lazy" />
-          </div>
+          <AboutImage src={about.image} alt={about.imageAlt} />
         </div>
 
         <div className="stats-row">
