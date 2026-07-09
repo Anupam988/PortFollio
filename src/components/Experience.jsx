@@ -16,7 +16,12 @@ function Logo({ exp }) {
   return (
     <div className="exp-logo">
       {exp.logo ? (
-        <img src={exp.logo} alt={exp.company} />
+        <img
+          src={exp.logo}
+          alt={exp.company}
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <span className="exp-logo-fallback" title={exp.company}>
           <i className="fa-solid fa-building" />

@@ -4,6 +4,7 @@ import { ADMIN_PATH } from './config'
 import { useSiteData } from './data/siteDataContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Services from './components/Services'
 import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
@@ -22,7 +23,9 @@ function parseRoute() {
   const h = window.location.hash
   if (h === ADMIN_PATH) return 'admin'
   if (h.startsWith('#/')) {
-    const p = h.slice(2).split(/[?#/]/)[0]
+    const parts = h.slice(2).split(/[?#]/)[0].split('/').filter(Boolean)
+    const p = parts[0]
+    if (p === 'projects' && parts[1]) return `project:${parts[1]}`
     if (PAGES.includes(p)) return p
   }
   return 'home'
@@ -102,7 +105,20 @@ export default function App() {
   } else if (route === 'projects') {
     content = (
       <div className="subpage">
-        <Projects projects={data.projects} />
+        <Projects projects={data.projects} detailed />
+      </div>
+    )
+  } else if (route.startsWith('project:')) {
+    const slug = route.slice('project:'.length)
+    const project = data.projects.find((p) => p.slug === slug)
+    content = (
+      <div className="subpage">
+        <Projects
+          projects={data.projects}
+          activeProject={project}
+          showProject
+          detailed
+        />
       </div>
     )
   } else {
@@ -113,7 +129,9 @@ export default function App() {
           technologies={data.technologies}
           about={data.about}
         />
+        <Services />
         <About about={data.about} />
+        <Projects projects={data.projects} />
         <Skills skills={data.skills} />
         <Experience
           experience={data.experience}
@@ -121,7 +139,6 @@ export default function App() {
           skills={data.skills}
           variant="compact"
         />
-        <Projects projects={data.projects} />
         <Contact contact={data.contact} />
       </>
     )

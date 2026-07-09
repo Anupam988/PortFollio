@@ -1,8 +1,16 @@
 import { useEffect, useMemo, useRef } from 'react'
-import { initHeroScene } from '../three/heroScene'
 import { useTypewriter } from '../hooks/useTypewriter'
 import { ArrowIcon } from './Icons'
 import CountUp from './CountUp'
+
+const scheduleIdle = (cb) => {
+  if ('requestIdleCallback' in window) {
+    const id = window.requestIdleCallback(cb, { timeout: 1200 })
+    return () => window.cancelIdleCallback(id)
+  }
+  const id = window.setTimeout(cb, 250)
+  return () => window.clearTimeout(id)
+}
 
 export default function Hero({ personal, technologies = [], about }) {
   const canvasRef = useRef(null)
@@ -12,8 +20,22 @@ export default function Hero({ personal, technologies = [], about }) {
 
   useEffect(() => {
     if (!canvasRef.current) return
-    const dispose = initHeroScene(canvasRef.current)
-    return dispose
+    const canvas = canvasRef.current
+    let dispose = () => {}
+    let cancelled = false
+
+    const cancelIdle = scheduleIdle(() => {
+      import('../three/heroScene').then(({ initHeroScene }) => {
+        if (cancelled || !canvas.isConnected) return
+        dispose = initHeroScene(canvas)
+      })
+    })
+
+    return () => {
+      cancelled = true
+      cancelIdle()
+      dispose()
+    }
   }, [])
 
   const floating = useMemo(() => {
@@ -93,13 +115,20 @@ export default function Hero({ personal, technologies = [], about }) {
 
           <div className="hero-visual">
             <div className="hero-portrait">
-              {portrait ? <img src={portrait} alt={personal.name} /> : null}
+              {portrait ? (
+                <img
+                  src={portrait}
+                  alt={personal.name}
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              ) : null}
             </div>
           </div>
         </div>
       </div>
 
-      <a href="#about" className="scroll-cue" aria-label="Scroll to about">
+      <a href="#services" className="scroll-cue" aria-label="Scroll to services">
         <span className="mouse" />
         Scroll
       </a>

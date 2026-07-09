@@ -26,7 +26,7 @@ export function SiteDataProvider({ children }) {
 
     Promise.all(
       Object.entries(FILES).map(([key, url]) =>
-        fetch(url, { cache: 'no-store' }).then((res) => {
+        fetch(url).then((res) => {
           if (!res.ok) throw new Error(`Failed to load ${url}`)
           return res.json().then((json) => [key, json])
         })

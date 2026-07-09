@@ -167,7 +167,13 @@ export default function AboutImage({ src, alt }) {
   return (
     <div className="about-image" ref={boxRef}>
       <canvas ref={canvasRef} className="about-particles" aria-hidden="true" />
-      <img ref={photoRef} src={src} alt={alt} loading="lazy" />
+      <img
+        ref={photoRef}
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   )
 }

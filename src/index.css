@@ -104,13 +104,13 @@ p {
 }
 
 .section {
-  padding: 110px 0;
+  padding: 64px 0;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: 44px 0;
   }
 }
 
@@ -214,3 +214,4 @@ p {
     transition: none;
   }
 }
+

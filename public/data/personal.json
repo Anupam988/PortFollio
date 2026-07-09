@@ -22,6 +22,10 @@
   },
   "navLinks": [
     {
+      "label": "Services",
+      "href": "#services"
+    },
+    {
       "label": "About",
       "href": "#about"
     },
@@ -35,7 +39,7 @@
     },
     {
       "label": "Projects",
-      "href": "#projects"
+      "href": "#/projects"
     },
     {
       "label": "Blog",

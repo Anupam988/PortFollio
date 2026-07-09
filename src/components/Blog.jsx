@@ -39,6 +39,7 @@ export default function Blog({ blog = [] }) {
                   src={post.image || DUMMY}
                   alt={post.title}
                   loading="lazy"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.src = DUMMY
                   }}
