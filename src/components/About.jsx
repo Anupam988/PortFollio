@@ -37,15 +37,6 @@ export default function About({ about }) {
 
           <AboutImage src={about.image} alt={about.imageAlt} />
         </div>
-
-        <div className="stats-row">
-          {about.stats.map((s) => (
-            <div className="stat" key={s.label}>
-              <div className="stat-num gradient-text">{s.num}</div>
-              <div className="stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )

@@ -1,18 +1,26 @@
 [
   {
-    "title": "Frontend",
-    "items": ["React", "Next.js", "TypeScript", "Vite", "Tailwind", "Three.js"]
+    "title": "Web Dev Technology",
+    "items": [
+      { "name": "React", "icon": "fa-brands fa-react", "color": "#61DAFB" },
+      { "name": "HTML", "icon": "fa-brands fa-html5", "color": "#E34F26" },
+      { "name": "CSS", "icon": "fa-brands fa-css3-alt", "color": "#1572B6" },
+      { "name": "PHP", "icon": "fa-brands fa-php", "color": "#777BB4" },
+      { "name": "Laravel", "icon": "fa-brands fa-laravel", "color": "#FF2D20" },
+      { "name": "Node.js", "icon": "fa-brands fa-node-js", "color": "#3C873A" },
+      { "name": "Express", "icon": "fa-solid fa-server", "color": "#E6EDF3" },
+      { "name": "Tailwind CSS", "icon": "fa-solid fa-wind", "color": "#38BDF8" },
+      { "name": "Bootstrap", "icon": "fa-brands fa-bootstrap", "color": "#7952B3" },
+      { "name": "MySQL", "icon": "fa-solid fa-database", "color": "#4479A1" },
+      { "name": "MongoDB", "icon": "fa-solid fa-leaf", "color": "#47A248" }
+    ]
   },
   {
-    "title": "Backend",
-    "items": ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST", "GraphQL"]
-  },
-  {
-    "title": "Tools & DevOps",
-    "items": ["Git", "Docker", "CI/CD", "AWS", "Vercel", "Linux"]
-  },
-  {
-    "title": "Practices",
-    "items": ["Testing", "Accessibility", "Agile", "Performance", "Design Systems"]
+    "title": "App Dev Technology",
+    "items": [
+      { "name": "Java", "icon": "fa-brands fa-java", "color": "#E76F00" },
+      { "name": "Kotlin", "icon": "fa-solid fa-mobile-screen-button", "color": "#A97BFF" },
+      { "name": "Flutter", "icon": "fa-solid fa-mobile-screen", "color": "#02A9F4" }
+    ]
   }
 ]

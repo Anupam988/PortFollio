@@ -1,0 +1,19 @@
+{
+  "tag": "Contact",
+  "heading": "Let's",
+  "headingAccent": "build something",
+  "intro": "Have a project in mind, a question, or just want to say hi? Drop a message and I'll get back to you.",
+  "items": [
+    { "type": "email", "label": "Email", "value": "chakrabortyanupam50@gmail.com" },
+    { "type": "phone", "label": "Phone", "value": "+91 98837 37889" },
+    { "type": "whatsapp", "label": "WhatsApp", "link": "https://wa.me/9883737889" },
+    { "type": "linkedin", "label": "LinkedIn", "link": "https://www.linkedin.com/in/anupam-chakraborty-485176348" }
+  ],
+  "form": {
+    "namePlaceholder": "Jane Doe",
+    "emailPlaceholder": "jane@example.com",
+    "messagePlaceholder": "Tell me about your project...",
+    "button": "Send message",
+    "sending": "Sending…"
+  }
+}

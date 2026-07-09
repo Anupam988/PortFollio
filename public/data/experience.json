@@ -1,43 +1,45 @@
 [
   {
-    "role": "Senior Full-Stack Developer",
-    "company": "TechCorp",
-    "companyUrl": "https://example.com",
-    "logo": "/assets/experience/company1.png",
-    "period": "2023 — Present",
-    "location": "Remote",
+    "role": "Web Development Intern",
+    "company": "Horizon Allienz Private Limited",
+    "companyUrl": "https://hallienz.com/",
+    "logo": "/assets/experience/horizon-allienz.png",
+    "period": "Nov 2024 — Present",
+    "location": "Kolkata, West Bengal, India · Hybrid",
     "points": [
-      "Led a team building a real-time analytics platform serving 1M+ users.",
-      "Cut API latency by 40% through caching and query optimization.",
-      "Mentored 4 junior engineers and owned the CI/CD pipeline."
+      "Developing full-stack web applications using Laravel, PHP, MySQL, and React.",
+      "Working on backend APIs, database schema design, and dynamic web application features.",
+      "Contributing to project planning, UI implementation, debugging, and deployment-ready development."
     ],
-    "technologies": ["React", "Node.js", "AWS", "PostgreSQL", "Docker"]
+    "technologies": [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "React",
+      "Project Design",
+      "Android Development",
+      "Kotlin",
+      "Flutter",
+      "Web Application Development"
+    ]
   },
   {
-    "role": "Frontend Developer",
-    "company": "Webly Studio",
-    "companyUrl": "https://example.com",
-    "logo": "",
-    "period": "2021 — 2023",
-    "location": "Bengaluru, India",
+    "role": "Web Designer",
+    "company": "Ardent Computech Pvt. Ltd.",
+    "companyUrl": "https://www.ardentcollaborations.com/",
+    "logo": "/assets/experience/ardent-computech.webp",
+    "period": "Jul 2024 — Aug 2024",
+    "location": "Kolkata, West Bengal, India · On-site",
     "points": [
-      "Shipped 20+ responsive marketing sites and web apps.",
-      "Built a reusable component library adopted across every project.",
-      "Raised Lighthouse scores to 95+ on core pages."
+      "Designed responsive web pages using HTML, CSS, and JavaScript.",
+      "Created clean and user-friendly layouts focused on modern web design principles.",
+      "Improved practical understanding of frontend development and website structure."
     ],
-    "technologies": ["React", "TypeScript", "Next.js", "Tailwind"]
-  },
-  {
-    "role": "Junior Developer",
-    "company": "StartUp Labs",
-    "companyUrl": "https://example.com",
-    "logo": "",
-    "period": "2020 — 2021",
-    "location": "Remote",
-    "points": [
-      "Developed REST APIs and integrated third-party services.",
-      "Wrote unit and integration tests, lifting coverage to 80%."
-    ],
-    "technologies": ["Node.js", "Express", "MongoDB", "Jest"]
+    "technologies": [
+      "Web Design",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
   }
 ]

@@ -1,14 +1,15 @@
 {
-  "lead": "I'm a developer who loves turning complex problems into simple, elegant interfaces.",
+  "lead": "I'm a Software Development Engineer building full-stack web applications and modern app solutions.",
   "paragraphs": [
-    "With a background spanning front-end and back-end development, I focus on writing clean, maintainable code and shipping products people actually enjoy using.",
-    "When I'm not coding, you'll find me exploring new frameworks, contributing to open source, or over-engineering my personal setup."
+    "I work across front-end, back-end, APIs, and database schema design to build clean, scalable, and maintainable products.",
+    "I have developed multiple full-stack projects and bring leadership, adaptability, teamwork, and ownership to every project.",
+    "As a team lead, I focus on clear communication, practical planning, and smooth project execution."
   ],
   "stats": [
-    { "num": "5+", "label": "Years experience" },
+    { "num": "2+", "label": "Years experience" },
     { "num": "40+", "label": "Projects shipped" },
     { "num": "20+", "label": "Happy clients" },
-    { "num": "∞", "label": "Cups of coffee" }
+    { "num": "∞", "label": "Problems solved" }
   ],
   "image": "/assets/web/about.png",
   "imageAlt": "Portrait of the developer"

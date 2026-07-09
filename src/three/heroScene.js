@@ -74,7 +74,7 @@ export function initHeroScene(canvas) {
     cornerGeo,
     new THREE.PointsMaterial({
       color: CYAN,
-      size: 0.16,
+      size: 0.08,
       transparent: true,
       opacity: 0.9,
       blending: THREE.AdditiveBlending,
@@ -127,7 +127,7 @@ export function initHeroScene(canvas) {
   const shardData = []
   for (let i = 0; i < 5; i++) {
     const m = new THREE.Mesh(
-      new THREE.OctahedronGeometry(0.3 + Math.random() * 0.25, 0),
+      new THREE.OctahedronGeometry(0.12 + Math.random() * 0.12, 0),
       shardMat
     )
     const radius = 3.6 + Math.random() * 2.5

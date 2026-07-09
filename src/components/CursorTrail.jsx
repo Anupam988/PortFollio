@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
-// A shooting-star / comet cursor tracker rendered on a full-screen
-// canvas. Pointer-events are disabled so it never blocks clicks.
+// Custom cursor: a small dot at the pointer with a thin ring that eases
+// toward it, plus a comet trail that fades out smoothly when you stop.
 export default function CursorTrail() {
   const canvasRef = useRef(null)
 
@@ -12,10 +12,9 @@ export default function CursorTrail() {
 
     let w = 0
     let h = 0
-    let dpr = 1
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
       w = window.innerWidth
       h = window.innerHeight
       canvas.width = w * dpr
@@ -27,69 +26,84 @@ export default function CursorTrail() {
     resize()
     window.addEventListener('resize', resize)
 
-    const trail = [] // recent cursor points -> comet tail
-    const sparks = [] // drifting star particles
-    let mx = -100
-    let my = -100
-    let px = -100
-    let py = -100
+    const trail = [] // { x, y, life } -> comet tail, fades over time
+    const sparks = []
+    const mouse = { x: -100, y: -100 }
+    const ring = { x: -100, y: -100 }
+    let lastX = -100
+    let lastY = -100
+    let inside = false
+    let op = 0 // dot/ring opacity, eases toward inside ? 1 : 0
 
     const onMove = (e) => {
-      px = mx
-      py = my
-      mx = e.clientX
-      my = e.clientY
+      mouse.x = e.clientX
+      mouse.y = e.clientY
+      if (!inside) {
+        // first appearance: snap the ring so it doesn't fly in
+        ring.x = mouse.x
+        ring.y = mouse.y
+      }
+      inside = true
 
-      trail.push({ x: mx, y: my })
-      if (trail.length > 20) trail.shift()
+      const dx = mouse.x - lastX
+      const dy = mouse.y - lastY
+      lastX = mouse.x
+      lastY = mouse.y
 
-      const dx = mx - px
-      const dy = my - py
+      trail.push({ x: mouse.x, y: mouse.y, life: 1 })
+      if (trail.length > 24) trail.shift()
+
       const speed = Math.hypot(dx, dy)
-      const count = Math.min(4, 1 + (speed / 12) | 0)
+      const count = Math.min(3, (speed / 16) | 0)
       for (let i = 0; i < count; i++) {
         sparks.push({
-          x: mx,
-          y: my,
-          vx: -dx * 0.03 + (Math.random() - 0.5) * 1.4,
-          vy: -dy * 0.03 + (Math.random() - 0.5) * 1.4,
+          x: mouse.x,
+          y: mouse.y,
+          vx: -dx * 0.03 + (Math.random() - 0.5) * 1.2,
+          vy: -dy * 0.03 + (Math.random() - 0.5) * 1.2,
           life: 1,
-          size: 1 + Math.random() * 2.2,
+          size: 1 + Math.random() * 1.8,
           hue: Math.random() < 0.5 ? 190 : 225,
         })
       }
     }
+    const onLeave = () => {
+      inside = false
+    }
     window.addEventListener('mousemove', onMove)
+    document.addEventListener('mouseleave', onLeave)
+    window.addEventListener('blur', onLeave)
 
     let raf = 0
     const loop = () => {
       ctx.clearRect(0, 0, w, h)
 
-      // Comet tail through recent points
+      // ease ring toward the cursor + fade dot/ring in/out
+      ring.x += (mouse.x - ring.x) * 0.18
+      ring.y += (mouse.y - ring.y) * 0.18
+      op += ((inside ? 1 : 0) - op) * 0.1
+
+      // fade the comet trail every frame (blends out when stopped)
+      for (let i = 0; i < trail.length; i++) trail[i].life -= 0.045
+      while (trail.length && trail[0].life <= 0) trail.shift()
+
       if (trail.length > 1) {
         ctx.lineCap = 'round'
         for (let i = 1; i < trail.length; i++) {
           const p0 = trail[i - 1]
           const p1 = trail[i]
           const t = i / trail.length
-          ctx.strokeStyle = `rgba(0, 224, 255, ${t * 0.5})`
-          ctx.lineWidth = t * 4
+          const a = t * p1.life * 0.5
+          ctx.strokeStyle = `rgba(0, 224, 255, ${a})`
+          ctx.lineWidth = t * p1.life * 3.4
           ctx.beginPath()
           ctx.moveTo(p0.x, p0.y)
           ctx.lineTo(p1.x, p1.y)
           ctx.stroke()
         }
-        const head = trail[trail.length - 1]
-        const g = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 16)
-        g.addColorStop(0, 'rgba(190, 245, 255, 0.9)')
-        g.addColorStop(1, 'rgba(0, 224, 255, 0)')
-        ctx.fillStyle = g
-        ctx.beginPath()
-        ctx.arc(head.x, head.y, 16, 0, Math.PI * 2)
-        ctx.fill()
       }
 
-      // Drifting sparks
+      // sparks drift + fade
       for (let i = sparks.length - 1; i >= 0; i--) {
         const s = sparks[i]
         s.x += s.vx
@@ -106,6 +120,21 @@ export default function CursorTrail() {
         ctx.fill()
       }
 
+      // ring (outline) that trails slightly behind the pointer
+      if (op > 0.01) {
+        ctx.strokeStyle = `rgba(0, 224, 255, ${0.6 * op})`
+        ctx.lineWidth = 1.5
+        ctx.beginPath()
+        ctx.arc(ring.x, ring.y, 9, 0, Math.PI * 2)
+        ctx.stroke()
+
+        // solid dot at the exact pointer
+        ctx.fillStyle = `rgba(200, 245, 255, ${0.95 * op})`
+        ctx.beginPath()
+        ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2)
+        ctx.fill()
+      }
+
       raf = requestAnimationFrame(loop)
     }
     loop()
@@ -114,6 +143,8 @@ export default function CursorTrail() {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseleave', onLeave)
+      window.removeEventListener('blur', onLeave)
     }
   }, [])
 

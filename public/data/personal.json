@@ -3,14 +3,17 @@
   "logoSuffix": ".dev",
   "heroImage": "/assets/web/main.jpg",
   "roles": [
+    "Software Development Engineer",
     "Full-Stack Developer",
-    "React Engineer",
-    "Problem Solver",
-    "Open-Source Contributor"
+    "Backend Architecture",
+    "Database Schema Design",
+    "App Developer",
+    "Team Lead"
   ],
   "tagline": "I build fast, accessible, and delightful web experiences — from pixel-perfect front-ends to resilient back-end APIs.",
   "location": "Earth, Remote-friendly",
   "email": "you@example.com",
+  "phone": "+91 90000 00000",
   "socials": {
     "github": "https://github.com/your-username",
     "linkedin": "https://www.linkedin.com/in/your-username",
@@ -18,10 +21,29 @@
     "whatsapp": "https://wa.me/10000000000"
   },
   "navLinks": [
-    { "label": "About", "href": "#about" },
-    { "label": "Skills", "href": "#skills" },
-    { "label": "Experience", "href": "#experience" },
-    { "label": "Projects", "href": "#projects" },
-    { "label": "Contact", "href": "#contact" }
+    {
+      "label": "About",
+      "href": "#about"
+    },
+    {
+      "label": "Skills",
+      "href": "#skills"
+    },
+    {
+      "label": "Experience",
+      "href": "#/experience"
+    },
+    {
+      "label": "Projects",
+      "href": "#projects"
+    },
+    {
+      "label": "Blog",
+      "href": "#/blog"
+    },
+    {
+      "label": "Contact",
+      "href": "#contact"
+    }
   ]
 }

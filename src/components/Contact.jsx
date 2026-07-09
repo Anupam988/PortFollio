@@ -1,22 +1,48 @@
 import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import { saveSubmission } from '../lib/submissions'
-import { GithubIcon, LinkedinIcon, MailIcon, WhatsappIcon } from './Icons'
+import {
+  CheckIcon,
+  CopyIcon,
+  ExternalIcon,
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  PhoneIcon,
+  WhatsappIcon,
+} from './Icons'
 
 const initial = { name: '', email: '', message: '' }
 
-export default function Contact({ personal }) {
+const ICONS = {
+  email: <MailIcon />,
+  phone: <PhoneIcon />,
+  whatsapp: <WhatsappIcon />,
+  linkedin: <LinkedinIcon />,
+  github: <GithubIcon />,
+  link: <ExternalIcon />,
+}
+
+// Pretty-print a url for display (drop scheme / trailing slash).
+const strip = (u = '') =>
+  String(u)
+    .replace(/^https?:\/\/(www\.)?/, '')
+    .replace(/^mailto:/, '')
+    .replace(/^tel:/, '')
+    .replace(/\/$/, '')
+
+export default function Contact({ contact = {} }) {
   const ref = useReveal()
   const [form, setForm] = useState(initial)
   const [status, setStatus] = useState({ state: 'idle', message: '' })
-  const socials = personal.socials || {}
+  const [copied, setCopied] = useState(null)
+  const f = contact.form || {}
 
   const handleChange = (e) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     const name = form.name.trim()
     const email = form.email.trim()
     const message = form.message.trim()
@@ -32,7 +58,6 @@ export default function Contact({ personal }) {
 
     setStatus({ state: 'loading', message: '' })
     try {
-      // Writes to public/message.json (or localStorage as a fallback).
       await saveSubmission({ name, email, message })
       setStatus({
         state: 'success',
@@ -47,65 +72,110 @@ export default function Contact({ personal }) {
     }
   }
 
-  const contactItems = [
-    { icon: <MailIcon />, label: 'Email', value: personal.email, href: socials.email },
-    { icon: <WhatsappIcon />, label: 'WhatsApp', value: 'Message me', href: socials.whatsapp },
-    { icon: <LinkedinIcon />, label: 'LinkedIn', value: 'Connect', href: socials.linkedin },
-    { icon: <GithubIcon />, label: 'GitHub', value: 'Follow', href: socials.github },
-  ]
+  const copy = async (key, value) => {
+    try {
+      await navigator.clipboard.writeText(value)
+    } catch {
+      /* clipboard unavailable */
+    }
+    setCopied(key)
+    setTimeout(() => setCopied((c) => (c === key ? null : c)), 1400)
+  }
+
+  // Each item is either a link (clickable) or a value (copyable).
+  const contactItems = (contact.items || []).map((it) => ({
+    type: it.type,
+    icon: ICONS[it.type] || <ExternalIcon />,
+    label: it.label,
+    link: it.link || '',
+    value: it.value || (it.link ? strip(it.link) : ''),
+  }))
 
   const loading = status.state === 'loading'
 
   return (
     <section className="section" id="contact">
       <div className="container reveal" ref={ref}>
-        <p className="section-tag">Contact</p>
+        <p className="section-tag">{contact.tag || 'Contact'}</p>
         <h2 className="section-title">
-          Let&apos;s <span className="gradient-text">build something</span>
+          {contact.heading || "Let's"}{' '}
+          <span className="gradient-text">
+            {contact.headingAccent || 'build something'}
+          </span>
         </h2>
 
         <div className="contact-grid">
           <div className="contact-intro">
-            <p>
-              Have a project in mind, a question, or just want to say hi? Drop a
-              message and I&apos;ll get back to you.
-            </p>
+            <p>{contact.intro}</p>
             <ul className="contact-list">
-              {contactItems.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    target={item.href && item.href.startsWith('mailto') ? undefined : '_blank'}
-                    rel="noreferrer"
-                  >
+              {contactItems.map((item) =>
+                item.link ? (
+                  <li key={item.label}>
+                    <a href={item.link} target="_blank" rel="noreferrer">
+                      <span className="ico">{item.icon}</span>
+                      <span>
+                        <span className="c-label">{item.label}</span>
+                        <br />
+                        <span className="c-val">{item.value}</span>
+                      </span>
+                    </a>
+                  </li>
+                ) : (
+                  <li key={item.label} className="contact-copy-row">
                     <span className="ico">{item.icon}</span>
-                    <span>
+                    <span className="c-body">
                       <span className="c-label">{item.label}</span>
                       <br />
                       <span className="c-val">{item.value}</span>
                     </span>
-                  </a>
-                </li>
-              ))}
+                    <button
+                      type="button"
+                      className="c-copy"
+                      onClick={() => copy(item.label, item.value)}
+                      aria-label={`Copy ${item.label}`}
+                      title="Copy"
+                    >
+                      {copied === item.label ? <CheckIcon /> : <CopyIcon />}
+                    </button>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="field">
               <label htmlFor="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Jane Doe"
-                value={form.name} onChange={handleChange} />
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder={f.namePlaceholder || 'Jane Doe'}
+                value={form.name}
+                onChange={handleChange}
+              />
             </div>
             <div className="field">
               <label htmlFor="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="jane@example.com"
-                value={form.email} onChange={handleChange} />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder={f.emailPlaceholder || 'jane@example.com'}
+                value={form.email}
+                onChange={handleChange}
+              />
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="5"
-                placeholder="Tell me about your project..."
-                value={form.message} onChange={handleChange} />
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder={f.messagePlaceholder || 'Tell me about your project...'}
+                value={form.message}
+                onChange={handleChange}
+              />
             </div>
 
             {status.state === 'success' || status.state === 'error' ? (
@@ -113,7 +183,7 @@ export default function Contact({ personal }) {
             ) : null}
 
             <button type="submit" className="btn btn-primary" disabled={loading}>
-              {loading ? 'Sending…' : 'Send message'}
+              {loading ? f.sending || 'Sending…' : f.button || 'Send message'}
             </button>
           </form>
         </div>

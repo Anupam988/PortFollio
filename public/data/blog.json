@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Getting Started with React and Vite",
+    "date": "2026-06-10",
+    "tag": "React",
+    "readTime": "6 min read",
+    "image": "/assets/blog/blog1.png",
+    "excerpt": "How I set up a blazing-fast React project with Vite, and the small config tweaks that made the biggest difference to my workflow.",
+    "url": "https://example.com"
+  },
+  {
+    "title": "Animating the Web with Three.js",
+    "date": "2026-05-22",
+    "tag": "WebGL",
+    "readTime": "8 min read",
+    "image": "/assets/blog/blog2.png",
+    "excerpt": "A practical intro to building 3D scenes and particle effects that stay smooth in the browser, with lessons from this very portfolio.",
+    "url": "https://example.com"
+  },
+  {
+    "title": "Clean State Management Patterns",
+    "date": "2026-04-30",
+    "tag": "Architecture",
+    "readTime": "5 min read",
+    "image": "",
+    "excerpt": "When to reach for context, when for a store, and how to keep your components dumb, predictable and testable.",
+    "url": "https://example.com"
+  }
+]

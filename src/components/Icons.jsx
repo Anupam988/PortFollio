@@ -89,3 +89,28 @@ export function ArrowIcon(props) {
     </svg>
   )
 }
+
+export function PhoneIcon(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  )
+}
+
+export function CopyIcon(props) {
+  return (
+    <svg {...base} width={15} height={15} {...props}>
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+  )
+}
+
+export function CheckIcon(props) {
+  return (
+    <svg {...base} width={15} height={15} {...props}>
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  )
+}

@@ -12,6 +12,8 @@ const FILES = {
   skills: '/data/skills.json',
   projects: '/data/projects.json',
   experience: '/data/experience.json',
+  blog: '/data/blog.json',
+  contact: '/data/contact.json',
   technologies: '/data/technologies.json',
 }
 
