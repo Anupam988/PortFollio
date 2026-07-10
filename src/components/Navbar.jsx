@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { MenuIcon, CloseIcon } from './Icons'
+import ThemeToggle from './ThemeToggle'
 
-export default function Navbar({ personal }) {
+export default function Navbar({ personal, route = 'home' }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -22,9 +23,16 @@ export default function Navbar({ personal }) {
   const suffix = (personal.logoSuffix || '.dev').replace(/^\./, '')
   const navLinks = personal.navLinks || []
 
+  const isActive = (href) => {
+    const seg = href === '/' ? 'home' : href.replace(/^\//, '').split('/')[0]
+    if (seg === 'home') return route === 'home'
+    if (seg === 'projects') return route === 'projects' || route.startsWith('project:')
+    return route === seg
+  }
+
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-      <a href="#home" className="nav-logo" onClick={() => setOpen(false)}>
+      <a href="/" className="nav-logo" onClick={() => setOpen(false)}>
         <img src="/assets/web/logo.png" alt="" aria-hidden="true" />
         <span className="nav-logo-text">
           {initials}
@@ -33,34 +41,43 @@ export default function Navbar({ personal }) {
         </span>
       </a>
 
-      <button
-        type="button"
-        className="nav-toggle"
-        aria-label={open ? 'Close menu' : 'Open menu'}
-        aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
-      >
-        {open ? <CloseIcon /> : <MenuIcon />}
-      </button>
-
-      <ul className={`nav-links${open ? ' open' : ''}`}>
-        {navLinks.map((link) => (
-          <li key={link.href}>
-            <a href={link.href} onClick={() => setOpen(false)}>
-              {link.label}
+      <div className="nav-right">
+        <ul className={`nav-links${open ? ' open' : ''}`}>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={isActive(link.href) ? 'active' : undefined}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="/contact"
+              className="btn btn-primary nav-cta"
+              onClick={() => setOpen(false)}
+            >
+              Hire me
             </a>
           </li>
-        ))}
-        <li>
-          <a
-            href="#contact"
-            className="btn btn-primary nav-cta"
-            onClick={() => setOpen(false)}
-          >
-            Hire me
-          </a>
-        </li>
-      </ul>
+        </ul>
+
+        <ThemeToggle />
+
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          {open ? <CloseIcon /> : <MenuIcon />}
+        </button>
+      </div>
     </nav>
   )
 }

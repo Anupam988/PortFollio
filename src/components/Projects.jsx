@@ -21,7 +21,7 @@ function ProjectDetail({ project }) {
         <div className="container pd-container">
           <p className="section-tag">Project</p>
           <h2 className="section-title">Project not found</h2>
-          <a className="btn btn-primary" href="#/projects">
+          <a className="btn btn-primary" href="/projects">
             Back to projects
           </a>
         </div>
@@ -52,7 +52,7 @@ function ProjectDetail({ project }) {
       </div>
 
       <div className="container pd-container">
-        <a className="project-back" href="#/projects">
+        <a className="project-back" href="/projects">
           &larr; All projects
         </a>
 
@@ -211,7 +211,7 @@ function ProjectDetail({ project }) {
 function ProjectTile({ project }) {
   const ref = useReveal()
   const tech = getTech(project)
-  const detailHref = project.slug ? `#/projects/${project.slug}` : undefined
+  const detailHref = project.slug ? `/projects/${project.slug}` : undefined
 
   return (
     <article className="project-tile reveal" ref={ref}>
@@ -351,7 +351,7 @@ export default function Projects({ projects, activeProject, showProject, detaile
 
         {remaining > 0 ? (
           <div className="projects-more">
-            <a className="btn btn-ghost" href="#/projects">
+            <a className="btn btn-ghost" href="/projects">
               +{remaining} more {remaining === 1 ? 'project' : 'projects'}
             </a>
           </div>

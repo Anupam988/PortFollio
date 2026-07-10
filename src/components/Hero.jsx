@@ -93,10 +93,10 @@ export default function Hero({ personal, technologies = [], about }) {
             <p className="hero-desc">{personal.tagline}</p>
 
             <div className="hero-actions">
-              <a href="#projects" className="btn btn-primary">
+              <a href="/projects" className="btn btn-primary">
                 View my work <ArrowIcon />
               </a>
-              <a href="#contact" className="btn btn-ghost">
+              <a href="/contact" className="btn btn-ghost">
                 Get in touch
               </a>
             </div>
@@ -128,10 +128,18 @@ export default function Hero({ personal, technologies = [], about }) {
         </div>
       </div>
 
-      <a href="#services" className="scroll-cue" aria-label="Scroll to services">
+      <button
+        type="button"
+        className="scroll-cue"
+        aria-label="Scroll to services"
+        onClick={() => {
+          const el = document.getElementById('services')
+          if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }}
+      >
         <span className="mouse" />
         Scroll
-      </a>
+      </button>
     </header>
   )
 }

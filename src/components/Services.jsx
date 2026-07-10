@@ -34,15 +34,27 @@ const SERVICES = [
   },
 ]
 
-// Seamless wave path: period 50 across a 200-unit viewBox (4 periods),
-// so translating the 200%-wide svg by -50% loops without a seam.
+// Seamless wave path: period 50 across a 200-unit viewBox (4 periods).
 const WAVE = (() => {
   let d = 'M0 30 q12.5 -14 25 0'
   for (let x = 25; x < 200; x += 25) d += ' t25 0'
   return d + ' V60 H0 Z'
 })()
 
-export default function Services() {
+function ServiceWave() {
+  return (
+    <span className="service-wave" aria-hidden="true">
+      <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="a">
+        <path d={WAVE} />
+      </svg>
+      <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="b">
+        <path d={WAVE} />
+      </svg>
+    </span>
+  )
+}
+
+export default function Services({ page = false }) {
   const ref = useReveal()
   const [active, setActive] = useState(0)
   const [introStep, setIntroStep] = useState(0)
@@ -63,7 +75,6 @@ export default function Services() {
     [finishIntro, n]
   )
 
-  // First-load layer intro: back cards, side cards, then center card.
   useEffect(() => {
     const timers = [
       window.setTimeout(() => setIntroStep(1), 160),
@@ -71,21 +82,17 @@ export default function Services() {
       window.setTimeout(() => setIntroStep(3), 900),
       window.setTimeout(() => setIntroDone(true), 1350),
     ]
-
     return () => timers.forEach((timer) => window.clearTimeout(timer))
   }, [])
 
-  // Auto-advance one card at a time (paused while hovering the carousel).
   useEffect(() => {
     if (!introDone) return undefined
-
     const id = window.setInterval(() => {
       if (!paused.current) setActive((a) => (a + 1) % n)
     }, 3200)
     return () => window.clearInterval(id)
   }, [introDone, n])
 
-  // Left / right arrow keys move through the carousel.
   useEffect(() => {
     const onKey = (e) => {
       const tag = (e.target.tagName || '').toLowerCase()
@@ -97,12 +104,37 @@ export default function Services() {
     return () => window.removeEventListener('keydown', onKey)
   }, [go])
 
-  // Nearest circular distance from the active card (so it wraps smoothly).
   const offsetOf = (i) => {
     let o = i - active
     if (o > n / 2) o -= n
     if (o < -n / 2) o += n
     return o
+  }
+
+  // Dedicated Services page: every card in a static grid.
+  if (page) {
+    return (
+      <section className="section services-page" id="services">
+        <div className="container">
+          <p className="section-tag">Services</p>
+          <h2 className="section-title">
+            What I <span className="gradient-text">build</span>
+          </h2>
+          <div className="services-grid-page">
+            {SERVICES.map((s) => (
+              <article className="sp-card" key={s.title}>
+                <ServiceWave />
+                <div className="service-icon">
+                  <i className={s.icon} aria-hidden="true" />
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -137,15 +169,7 @@ export default function Services() {
                 (introStep >= 3 && abs === 0) ||
                 (introStep >= 2 && abs === 1) ||
                 (introStep >= 1 && abs === 2)
-              const opacity = !ready
-                ? 0
-                : hidden
-                  ? 0
-                  : o === 0
-                    ? 1
-                    : abs === 1
-                      ? 0.68
-                      : 0.34
+              const opacity = !ready ? 0 : hidden ? 0 : o === 0 ? 1 : abs === 1 ? 0.68 : 0.34
               const y = ready ? 0 : abs === 0 ? 44 : 26
               return (
                 <article
@@ -163,14 +187,7 @@ export default function Services() {
                     setActive(i)
                   }}
                 >
-                  <span className="service-wave" aria-hidden="true">
-                    <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="a">
-                      <path d={WAVE} />
-                    </svg>
-                    <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="b">
-                      <path d={WAVE} />
-                    </svg>
-                  </span>
+                  <ServiceWave />
                   <div className="service-icon">
                     <i className={s.icon} aria-hidden="true" />
                   </div>

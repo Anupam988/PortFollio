@@ -94,7 +94,7 @@ export default function Admin() {
             <p className="glyph">{'{ }'}</p>
             <h3>No submissions yet</h3>
             <p>Messages sent through the contact form will appear here.</p>
-            <a className="btn btn-primary" href="#home">
+            <a className="btn btn-primary" href="/">
               ← Back to site
             </a>
           </div>
@@ -136,7 +136,7 @@ export default function Admin() {
               ))}
             </div>
             <div className="admin-foot">
-              <a className="btn btn-ghost" href="#home">
+              <a className="btn btn-ghost" href="/">
                 ← Back to site
               </a>
             </div>

@@ -19,17 +19,16 @@ const Projects = lazy(() => import('./components/Projects'))
 const Blog = lazy(() => import('./components/Blog'))
 const Contact = lazy(() => import('./components/Contact'))
 
-const PAGES = ['blog', 'skills', 'experience', 'projects']
+const PAGES = ['about', 'services', 'skills', 'experience', 'projects', 'blog', 'contact']
 
+// Clean path routing (no hash). Needs SPA fallback on static hosts.
 function parseRoute() {
-  const h = window.location.hash
-  if (h === ADMIN_PATH) return 'admin'
-  if (h.startsWith('#/')) {
-    const parts = h.slice(2).split(/[?#]/)[0].split('/').filter(Boolean)
-    const p = parts[0]
-    if (p === 'projects' && parts[1]) return `project:${parts[1]}`
-    if (PAGES.includes(p)) return p
-  }
+  const path = window.location.pathname.replace(/\/+$/, '')
+  if (path === ADMIN_PATH) return 'admin'
+  const seg = path.split('/').filter(Boolean)
+  if (seg.length === 0) return 'home'
+  if (seg[0] === 'projects' && seg[1]) return `project:${seg[1]}`
+  if (PAGES.includes(seg[0])) return seg[0]
   return 'home'
 }
 
@@ -37,10 +36,42 @@ export default function App() {
   const [route, setRoute] = useState(parseRoute)
   const { data, error } = useSiteData()
 
+  // Path routing: intercept internal link clicks + handle back/forward.
   useEffect(() => {
-    const onHash = () => setRoute(parseRoute())
-    window.addEventListener('hashchange', onHash)
-    return () => window.removeEventListener('hashchange', onHash)
+    const onPop = () => setRoute(parseRoute())
+    window.addEventListener('popstate', onPop)
+
+    const onClick = (e) => {
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey
+      )
+        return
+      const a = e.target.closest && e.target.closest('a')
+      if (!a) return
+      const href = a.getAttribute('href')
+      if (!href || a.target === '_blank') return
+      if (/^(https?:|mailto:|tel:)/i.test(href)) return
+      if (href.startsWith('#')) return // in-page anchor
+      if (href.startsWith('/')) {
+        e.preventDefault()
+        if (href !== window.location.pathname) {
+          window.history.pushState({}, '', href)
+          setRoute(parseRoute())
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+      }
+    }
+    document.addEventListener('click', onClick)
+    return () => {
+      window.removeEventListener('popstate', onPop)
+      document.removeEventListener('click', onClick)
+    }
   }, [])
 
   useEffect(() => {
@@ -89,18 +120,8 @@ export default function App() {
     setMeta('meta[property="og:image"]', 'content', '/assets/web/logo.png')
   }, [data])
 
-  // Scroll behaviour when the route changes.
+  // Jump to top on every route change.
   useEffect(() => {
-    if (route === 'home') {
-      const h = window.location.hash
-      if (h && h.length > 1 && !h.startsWith('#/')) {
-        const el = document.querySelector(h)
-        if (el) {
-          requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }))
-          return
-        }
-      }
-    }
     window.scrollTo(0, 0)
   }, [route])
 
@@ -128,10 +149,16 @@ export default function App() {
   }
 
   let content
-  if (route === 'blog') {
+  if (route === 'about') {
     content = (
       <div className="subpage">
-        <Blog blog={data.blog} />
+        <About about={data.about} />
+      </div>
+    )
+  } else if (route === 'services') {
+    content = (
+      <div className="subpage">
+        <Services page />
       </div>
     )
   } else if (route === 'skills') {
@@ -167,6 +194,18 @@ export default function App() {
           showProject
           detailed
         />
+      </div>
+    )
+  } else if (route === 'blog') {
+    content = (
+      <div className="subpage">
+        <Blog blog={data.blog} />
+      </div>
+    )
+  } else if (route === 'contact') {
+    content = (
+      <div className="subpage">
+        <Contact contact={data.contact} />
       </div>
     )
   } else {
@@ -208,11 +247,9 @@ export default function App() {
     <>
       <Decorations />
       <SocialSidebar items={data.contact?.items || []} />
-      <Navbar personal={data.personal} />
+      <Navbar personal={data.personal} route={route} />
       <main>
-        <Suspense fallback={<div className="lazy-route-loader" />}>
-          {content}
-        </Suspense>
+        <Suspense fallback={<div className="lazy-route-loader" />}>{content}</Suspense>
       </main>
       <Footer personal={data.personal} contact={data.contact} />
       <ScrollTop />

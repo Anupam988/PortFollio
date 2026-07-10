@@ -1,13 +1,13 @@
 import { GithubIcon, LinkedinIcon, MailIcon, PhoneIcon, WhatsappIcon } from './Icons'
 
 const pages = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#/skills' },
-  { label: 'Experience', href: '#/experience' },
-  { label: 'Projects', href: '#/projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const ICONS = {

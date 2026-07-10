@@ -23,31 +23,31 @@
   "navLinks": [
     {
       "label": "Services",
-      "href": "#services"
+      "href": "/services"
     },
     {
       "label": "About",
-      "href": "#about"
+      "href": "/about"
     },
     {
       "label": "Skills",
-      "href": "#skills"
+      "href": "/skills"
     },
     {
       "label": "Experience",
-      "href": "#/experience"
+      "href": "/experience"
     },
     {
       "label": "Projects",
-      "href": "#/projects"
+      "href": "/projects"
     },
     {
       "label": "Blog",
-      "href": "#/blog"
+      "href": "/blog"
     },
     {
       "label": "Contact",
-      "href": "#contact"
+      "href": "/contact"
     }
   ]
 }
