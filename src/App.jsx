@@ -1,21 +1,23 @@
-import { useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import './App.css'
 import { ADMIN_PATH } from './config'
 import { useSiteData } from './data/siteDataContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Services from './components/Services'
-import About from './components/About'
-import Skills from './components/Skills'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
-import Blog from './components/Blog'
-import Contact from './components/Contact'
+import LazySection from './components/LazySection'
 import Footer from './components/Footer'
 import Admin from './components/Admin'
 import ScrollTop from './components/ScrollTop'
 import Decorations from './components/Decorations'
 import SocialSidebar from './components/SocialSidebar'
+
+const Services = lazy(() => import('./components/Services'))
+const About = lazy(() => import('./components/About'))
+const Skills = lazy(() => import('./components/Skills'))
+const Experience = lazy(() => import('./components/Experience'))
+const Projects = lazy(() => import('./components/Projects'))
+const Blog = lazy(() => import('./components/Blog'))
+const Contact = lazy(() => import('./components/Contact'))
 
 const PAGES = ['blog', 'skills', 'experience', 'projects']
 
@@ -40,6 +42,52 @@ export default function App() {
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
+
+  useEffect(() => {
+    if (!data) return
+
+    const name = data.personal?.name || 'Anupam Chakraborty'
+    const roles = data.personal?.roles || []
+    const projects = data.projects?.map((p) => p.title).filter(Boolean) || []
+    const title = `${name} - ${roles[1] || roles[0] || 'Full-Stack Developer'}`
+    const description =
+      data.personal?.tagline ||
+      `${name} portfolio, services, skills, projects, and contact.`
+    const keywords = [
+      name,
+      ...roles,
+      'web development',
+      'system architecture',
+      'database schema design',
+      'frontend development',
+      'backend development',
+      'cloud computing',
+      'Laravel',
+      'MySQL',
+      ...projects,
+    ]
+      .filter(Boolean)
+      .join(', ')
+
+    document.title = title
+
+    const setMeta = (selector, key, value) => {
+      let tag = document.head.querySelector(selector)
+      if (!tag) {
+        tag = document.createElement('meta')
+        const match = selector.match(/\[(name|property)="([^"]+)"\]/)
+        if (match) tag.setAttribute(match[1], match[2])
+        document.head.appendChild(tag)
+      }
+      tag.setAttribute(key, value)
+    }
+
+    setMeta('meta[name="description"]', 'content', description)
+    setMeta('meta[name="keywords"]', 'content', keywords)
+    setMeta('meta[property="og:title"]', 'content', title)
+    setMeta('meta[property="og:description"]', 'content', description)
+    setMeta('meta[property="og:image"]', 'content', '/assets/web/logo.png')
+  }, [data])
 
   // Scroll behaviour when the route changes.
   useEffect(() => {
@@ -129,17 +177,29 @@ export default function App() {
           technologies={data.technologies}
           about={data.about}
         />
-        <Services />
-        <About about={data.about} />
-        <Projects projects={data.projects} />
-        <Skills skills={data.skills} />
-        <Experience
-          experience={data.experience}
-          technologies={data.technologies}
-          skills={data.skills}
-          variant="compact"
-        />
-        <Contact contact={data.contact} />
+        <LazySection id="services" minHeight={360}>
+          <Services />
+        </LazySection>
+        <LazySection id="about" minHeight={720}>
+          <About about={data.about} />
+        </LazySection>
+        <LazySection id="skills" minHeight={560}>
+          <Skills skills={data.skills} />
+        </LazySection>
+        <LazySection id="experience" minHeight={560}>
+          <Experience
+            experience={data.experience}
+            technologies={data.technologies}
+            skills={data.skills}
+            variant="compact"
+          />
+        </LazySection>
+        <LazySection id="projects" minHeight={520}>
+          <Projects projects={data.projects} />
+        </LazySection>
+        <LazySection id="contact" minHeight={620}>
+          <Contact contact={data.contact} />
+        </LazySection>
       </>
     )
   }
@@ -149,8 +209,12 @@ export default function App() {
       <Decorations />
       <SocialSidebar items={data.contact?.items || []} />
       <Navbar personal={data.personal} />
-      <main>{content}</main>
-      <Footer personal={data.personal} />
+      <main>
+        <Suspense fallback={<div className="lazy-route-loader" />}>
+          {content}
+        </Suspense>
+      </main>
+      <Footer personal={data.personal} contact={data.contact} />
       <ScrollTop />
     </>
   )

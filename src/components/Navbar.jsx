@@ -25,9 +25,12 @@ export default function Navbar({ personal }) {
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <a href="#home" className="nav-logo" onClick={() => setOpen(false)}>
-        {initials}
-        <span>.</span>
-        {suffix}
+        <img src="/assets/web/logo.png" alt="" aria-hidden="true" />
+        <span className="nav-logo-text">
+          {initials}
+          <span>.</span>
+          {suffix}
+        </span>
       </a>
 
       <button

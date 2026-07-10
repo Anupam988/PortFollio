@@ -1,79 +1,77 @@
 import { GithubIcon, LinkedinIcon, MailIcon, PhoneIcon, WhatsappIcon } from './Icons'
 
-const strip = (u = '') =>
-  String(u)
-    .replace(/^https?:\/\/(www\.)?/, '')
-    .replace(/^mailto:/, '')
-    .replace(/\/$/, '')
-
 const pages = [
   { label: 'Home', href: '#home' },
+  { label: 'Services', href: '#services' },
+  { label: 'About', href: '#about' },
   { label: 'Skills', href: '#/skills' },
   { label: 'Experience', href: '#/experience' },
   { label: 'Projects', href: '#/projects' },
-  { label: 'Blog', href: '#/blog' },
+  { label: 'Contact', href: '#contact' },
 ]
 
-export default function Footer({ personal }) {
-  const year = new Date().getFullYear()
-  const s = personal.socials || {}
+const ICONS = {
+  email: <MailIcon />,
+  phone: <PhoneIcon />,
+  whatsapp: <WhatsappIcon />,
+  linkedin: <LinkedinIcon />,
+  github: <GithubIcon />,
+}
 
-  const items = [
-    { icon: <MailIcon />, label: 'Email', value: personal.email, href: s.email },
-    personal.phone && {
-      icon: <PhoneIcon />,
-      label: 'Phone',
-      value: personal.phone,
-      href: `tel:${String(personal.phone).replace(/[^\d+]/g, '')}`,
-    },
-    { icon: <LinkedinIcon />, label: 'LinkedIn', value: strip(s.linkedin), href: s.linkedin },
-    { icon: <GithubIcon />, label: 'GitHub', value: strip(s.github), href: s.github },
-    { icon: <WhatsappIcon />, label: 'WhatsApp', value: strip(s.whatsapp), href: s.whatsapp },
-  ].filter(Boolean)
+const hrefFor = (item) => {
+  if (item.link) return item.link
+  if (item.type === 'email' && item.value) return `mailto:${item.value}`
+  if (item.type === 'phone' && item.value) {
+    return `tel:${String(item.value).replace(/[^\d+]/g, '')}`
+  }
+  return ''
+}
+
+export default function Footer({ personal, contact = {} }) {
+  const year = new Date().getFullYear()
+  const items = (contact.items || []).map((item) => ({
+    ...item,
+    icon: ICONS[item.type] || <MailIcon />,
+    href: hrefFor(item),
+    showValue: item.type === 'email' || item.type === 'phone',
+  }))
 
   return (
     <footer className="footer">
-      <div className="container">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <div className="footer-brand-name">{personal.name}</div>
-            <p>{personal.tagline}</p>
-          </div>
+      <div className="footer-panel">
+        <ul className="footer-links">
+          {items.map((it) => (
+            <li key={it.label}>
+              <a
+                href={it.href}
+                target={
+                  it.href && !it.href.startsWith('mailto') && !it.href.startsWith('tel')
+                    ? '_blank'
+                    : undefined
+                }
+                rel="noreferrer"
+                aria-label={it.label}
+                title={it.label}
+              >
+                <span className="fl-ico">{it.icon}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-          <nav className="footer-explore">
-            <h4>Explore</h4>
-            <ul>
-              {pages.map((p) => (
-                <li key={p.label}>
-                  <a href={p.href}>{p.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <ul className="footer-links">
-            {items.map((it) => (
-              <li key={it.label}>
-                <a
-                  href={it.href}
-                  target={it.href && it.href.startsWith('mailto') ? undefined : '_blank'}
-                  rel="noreferrer"
-                >
-                  <span className="fl-ico">{it.icon}</span>
-                  <span>
-                    <span className="fl-label">{it.label}</span>
-                    <br />
-                    <span className="fl-val">{it.value}</span>
-                  </span>
-                </a>
+        <nav className="footer-explore" aria-label="Footer navigation">
+          <ul>
+            {pages.map((p) => (
+              <li key={p.label}>
+                <a href={p.href}>{p.label}</a>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
 
         <div className="footer-bottom">
           <p>
-            © {year} {personal.name}. Built with React &amp; Three.js.
+            Copyright &copy;{year}; Designed by {personal.name}
           </p>
         </div>
       </div>

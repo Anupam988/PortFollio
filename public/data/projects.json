@@ -2,7 +2,7 @@
   {
     "slug": "w3techiez",
     "glyph": "{ }",
-    "image": "/assets/projects/project1.png",
+    "image": "/assets/projects/w3t.png",
     "title": "W3Techiez",
     "featured": true,
     "category": "EdTech Platform",
@@ -12,8 +12,22 @@
     "problem": "Students and educators needed a centralized platform to manage online study content, class activity, and quiz-based learning.",
     "solution": "Designed the system architecture, database schema, backend workflows, and frontend experience to support online classes, material sharing, and quiz management.",
     "impact": "Delivered a complete learning platform with dynamic academic workflows and a scalable foundation for online education.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Online class management",
       "Study material sharing",
@@ -29,14 +43,15 @@
     "demo": "https://w3techiez.com/",
     "repo": "",
     "client": "W3Techiez",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based education platform built for online classes, study material distribution, quizzes, and structured digital learning management.</p>\n<h3>The problem</h3>\n<p>Students and educators needed a centralized platform to manage online study content, class activity, and quiz-based learning.</p>\n<h3>The solution</h3>\n<p>Designed the system architecture, database schema, backend workflows, and frontend experience to support online classes, material sharing, and quiz management.</p>\n<h3>Impact</h3>\n<p>Delivered a complete learning platform with dynamic academic workflows and a scalable foundation for online education.</p>\n<h3>Key features</h3>\n<ul><li>Online class management</li><li>Study material sharing</li><li>Online quiz workflow</li><li>Student-focused learning access</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Led the project implementation</li><li>Designed the full system architecture</li><li>Created the database schema and backend structure</li><li>Built frontend and backend modules end to end</li></ul>"
   },
   {
     "slug": "unzipexam",
     "glyph": "</>",
-    "image": "/assets/projects/project2.png",
+    "image": "/assets/projects/unzipExam.png",
     "title": "Unzip Exam",
-    "featured": false,
+    "featured": true,
     "category": "Online Exam System",
     "role": "Full-Stack Developer, Team Lead & System Architect",
     "description": "Full online examination platform for conducting digital exams with structured exam delivery workflows.",
@@ -44,8 +59,22 @@
     "problem": "Institutions needed a reliable way to conduct online exams with organized exam access and submission handling.",
     "solution": "Built the complete exam system architecture, backend, database schema, and frontend workflows for online exam delivery.",
     "impact": "Created a complete digital exam platform that supports structured online assessment workflows.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Online exam delivery",
       "Exam access workflow",
@@ -61,12 +90,13 @@
     "demo": "https://unzipexam.hallienz.com/",
     "repo": "",
     "client": "Unzip Exam",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based online exam project created for managing and delivering exams through a controlled digital platform.</p>\n<h3>The problem</h3>\n<p>Institutions needed a reliable way to conduct online exams with organized exam access and submission handling.</p>\n<h3>The solution</h3>\n<p>Built the complete exam system architecture, backend, database schema, and frontend workflows for online exam delivery.</p>\n<h3>Impact</h3>\n<p>Created a complete digital exam platform that supports structured online assessment workflows.</p>\n<h3>Key features</h3>\n<ul><li>Online exam delivery</li><li>Exam access workflow</li><li>Submission handling</li><li>Admin-manageable exam structure</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Led full-stack development</li><li>Designed system architecture</li><li>Implemented database schema</li><li>Built backend and frontend exam workflows</li></ul>"
   },
   {
     "slug": "msit-dynamic-website",
     "glyph": "MS",
-    "image": "/assets/projects/project3.png",
+    "image": "/assets/projects/msit.png",
     "title": "MSIT Dynamic Website",
     "featured": true,
     "category": "Institution Website CMS",
@@ -76,8 +106,22 @@
     "problem": "The institution needed a controllable website where content, menus, and pages could be updated without hardcoding every change.",
     "solution": "Designed dynamic page rendering, menu creation, data calling, and backend content controls for a fully manageable website.",
     "impact": "Enabled the institution to manage website content dynamically with a scalable CMS-style architecture.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Dynamic page creation",
       "Dynamic menu management",
@@ -93,12 +137,13 @@
     "demo": "https://www.msit.edu.in",
     "repo": "",
     "client": "MSIT",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A dynamic Laravel-powered institutional website where pages, menus, and page data can be controlled from the backend.</p>\n<h3>The problem</h3>\n<p>The institution needed a controllable website where content, menus, and pages could be updated without hardcoding every change.</p>\n<h3>The solution</h3>\n<p>Designed dynamic page rendering, menu creation, data calling, and backend content controls for a fully manageable website.</p>\n<h3>Impact</h3>\n<p>Enabled the institution to manage website content dynamically with a scalable CMS-style architecture.</p>\n<h3>Key features</h3>\n<ul><li>Dynamic page creation</li><li>Dynamic menu management</li><li>Backend-controlled page data</li><li>Reusable institutional content structure</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed full system architecture</li><li>Built dynamic content modules</li><li>Created database schema for pages and menus</li><li>Implemented frontend and backend integration</li></ul>"
   },
   {
     "slug": "hetc-dynamic-website",
     "glyph": "HE",
-    "image": "/assets/projects/project1.png",
+    "image": "/assets/projects/hetc.png",
     "title": "HETC Dynamic Website",
     "featured": true,
     "category": "Institution Website CMS",
@@ -108,8 +153,22 @@
     "problem": "The website needed a flexible backend so institutional content and navigation could be managed dynamically.",
     "solution": "Created a dynamic website architecture with backend-driven page creation, data rendering, and menu management.",
     "impact": "Reduced manual page maintenance and gave administrators a controllable institutional website system.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Dynamic page management",
       "Dynamic menu creation",
@@ -125,12 +184,13 @@
     "demo": "https://hetc.ac.in",
     "repo": "",
     "client": "HETC",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based dynamic college website built with controllable page data, dynamic menus, and reusable content structure.</p>\n<h3>The problem</h3>\n<p>The website needed a flexible backend so institutional content and navigation could be managed dynamically.</p>\n<h3>The solution</h3>\n<p>Created a dynamic website architecture with backend-driven page creation, data rendering, and menu management.</p>\n<h3>Impact</h3>\n<p>Reduced manual page maintenance and gave administrators a controllable institutional website system.</p>\n<h3>Key features</h3>\n<ul><li>Dynamic page management</li><li>Dynamic menu creation</li><li>Backend-controlled website content</li><li>Reusable CMS-like architecture</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed the system and database architecture</li><li>Built frontend website modules</li><li>Developed backend content controls</li><li>Implemented dynamic data rendering</li></ul>"
   },
   {
     "slug": "aapnacare",
     "glyph": "DR",
-    "image": "/assets/projects/project2.png",
+    "image": "/assets/projects/apnaCare.png",
     "title": "AapnaCare",
     "featured": true,
     "category": "Doctor Booking Platform",
@@ -140,8 +200,22 @@
     "problem": "Patients needed a simpler way to discover doctors and book appointments online.",
     "solution": "Built the full doctor booking workflow with backend data structure, appointment handling, and frontend booking pages.",
     "impact": "Created a practical healthcare booking system with dynamic doctor and appointment management.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Doctor listing",
       "Online appointment booking",
@@ -157,14 +231,15 @@
     "demo": "https://aapnacare.com/",
     "repo": "",
     "client": "AapnaCare",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based healthcare booking platform for patients to find doctors and book appointments online.</p>\n<h3>The problem</h3>\n<p>Patients needed a simpler way to discover doctors and book appointments online.</p>\n<h3>The solution</h3>\n<p>Built the full doctor booking workflow with backend data structure, appointment handling, and frontend booking pages.</p>\n<h3>Impact</h3>\n<p>Created a practical healthcare booking system with dynamic doctor and appointment management.</p>\n<h3>Key features</h3>\n<ul><li>Doctor listing</li><li>Online appointment booking</li><li>Healthcare service pages</li><li>Admin-manageable booking data</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed system architecture</li><li>Created database schema</li><li>Built booking backend workflows</li><li>Implemented frontend appointment experience</li></ul>"
   },
   {
     "slug": "camellia-hr-attendance",
     "glyph": "HR",
-    "image": "/assets/projects/project3.png",
+    "image": "/assets/projects/attendance.png",
     "title": "Camellia HR Attendance System",
-    "featured": false,
+    "featured": true,
     "category": "Attendance Management System",
     "role": "Full-Stack Developer, Team Lead & System Architect",
     "description": "Traceable attendance system with geofencing, multi-branch control, dynamic fence range, and IP blocking.",
@@ -172,8 +247,22 @@
     "problem": "The organization needed reliable attendance tracking across multiple branches with location and network restrictions.",
     "solution": "Designed geofence-based attendance, dynamic branch controls, configurable fence range, IP blocking, and traceable attendance logs.",
     "impact": "Improved attendance control, traceability, and branch-level attendance governance.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "Geofencing", "IP Control"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "Geofencing", "IP Control"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "Geofencing",
+      "IP Control"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "Geofencing",
+      "IP Control"
+    ],
     "features": [
       "Geofence attendance validation",
       "Dynamic multi-branch control",
@@ -189,12 +278,13 @@
     "demo": "https://hr.camelliagroup.net/",
     "repo": "",
     "client": "Camellia Group",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based HR attendance platform for multi-branch attendance tracking with geofence and IP-based control.</p>\n<h3>The problem</h3>\n<p>The organization needed reliable attendance tracking across multiple branches with location and network restrictions.</p>\n<h3>The solution</h3>\n<p>Designed geofence-based attendance, dynamic branch controls, configurable fence range, IP blocking, and traceable attendance logs.</p>\n<h3>Impact</h3>\n<p>Improved attendance control, traceability, and branch-level attendance governance.</p>\n<h3>Key features</h3>\n<ul><li>Geofence attendance validation</li><li>Dynamic multi-branch control</li><li>Dynamic fencing range</li><li>IP blocking and traceable attendance logs</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed attendance system architecture</li><li>Created geofence and branch data models</li><li>Built backend validation workflows</li><li>Implemented frontend attendance controls</li></ul>"
   },
   {
     "slug": "darpan-msit",
     "glyph": "DM",
-    "image": "/assets/projects/project1.png",
+    "image": "/assets/projects/erpMsit.png",
     "title": "Darpan MSIT",
     "featured": false,
     "category": "College Management System",
@@ -204,8 +294,22 @@
     "problem": "College information, syllabus, intake, admission, and institution details needed centralized management.",
     "solution": "Built a dynamic management platform for campus data, institution details, syllabus, intake, admission, and related academic records.",
     "impact": "Centralized major college management workflows into a dynamic administrative platform.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Multi-institution support",
       "Campus and college details management",
@@ -221,12 +325,13 @@
     "demo": "https://darpan.msit.edu.in/",
     "repo": "",
     "client": "MSIT",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based college management system built for managing institutional data across campus and multi-institution structures.</p>\n<h3>The problem</h3>\n<p>College information, syllabus, intake, admission, and institution details needed centralized management.</p>\n<h3>The solution</h3>\n<p>Built a dynamic management platform for campus data, institution details, syllabus, intake, admission, and related academic records.</p>\n<h3>Impact</h3>\n<p>Centralized major college management workflows into a dynamic administrative platform.</p>\n<h3>Key features</h3>\n<ul><li>Multi-institution support</li><li>Campus and college details management</li><li>Syllabus and intake management</li><li>Admission data management</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed full system architecture</li><li>Created academic database schema</li><li>Built backend management modules</li><li>Implemented frontend administrative workflows</li></ul>"
   },
   {
     "slug": "darpan-legmed",
     "glyph": "TL",
-    "image": "/assets/projects/project2.png",
+    "image": "/assets/projects/darpanLegmed.png",
     "title": "Darpan Legmed",
     "featured": false,
     "category": "Task Management Tool",
@@ -236,8 +341,22 @@
     "problem": "Client jobs, task ownership, work progress, and collection tracking needed a centralized operational system.",
     "solution": "Designed and built task, client, job, and collection management workflows with backend-controlled tracking.",
     "impact": "Improved operational visibility for client work, task progress, and money collection activities.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Client-based job management",
       "Task assignment and tracking",
@@ -253,12 +372,13 @@
     "demo": "https://darpan.legmed.in/",
     "repo": "",
     "client": "Legmed",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based task management and client workflow platform for tracking jobs, work progress, and collection-related activity.</p>\n<h3>The problem</h3>\n<p>Client jobs, task ownership, work progress, and collection tracking needed a centralized operational system.</p>\n<h3>The solution</h3>\n<p>Designed and built task, client, job, and collection management workflows with backend-controlled tracking.</p>\n<h3>Impact</h3>\n<p>Improved operational visibility for client work, task progress, and money collection activities.</p>\n<h3>Key features</h3>\n<ul><li>Client-based job management</li><li>Task assignment and tracking</li><li>Money collection workflow</li><li>Multi-job operational dashboard</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed workflow architecture</li><li>Created task and client data models</li><li>Built backend job management modules</li><li>Implemented frontend tracking interfaces</li></ul>"
   },
   {
     "slug": "msit-enquiry",
     "glyph": "EQ",
-    "image": "/assets/projects/project3.png",
+    "image": "/assets/projects/enquiryMsit.png",
     "title": "MSIT Enquiry System",
     "featured": false,
     "category": "Admission Enquiry System",
@@ -268,8 +388,22 @@
     "problem": "Admission enquiries needed structured capture, management, and follow-up handling.",
     "solution": "Built enquiry submission, backend management, and admission-related enquiry tracking workflows.",
     "impact": "Improved organization and traceability of admission enquiry data.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Admission enquiry capture",
       "Backend enquiry management",
@@ -285,7 +419,8 @@
     "demo": "https://enquiry.msit.edu.in/",
     "repo": "",
     "client": "MSIT",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based enquiry management system created for handling admission-related student enquiries.</p>\n<h3>The problem</h3>\n<p>Admission enquiries needed structured capture, management, and follow-up handling.</p>\n<h3>The solution</h3>\n<p>Built enquiry submission, backend management, and admission-related enquiry tracking workflows.</p>\n<h3>Impact</h3>\n<p>Improved organization and traceability of admission enquiry data.</p>\n<h3>Key features</h3>\n<ul><li>Admission enquiry capture</li><li>Backend enquiry management</li><li>Student enquiry tracking</li><li>Admin workflow support</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed enquiry system structure</li><li>Created database schema</li><li>Built backend enquiry modules</li><li>Implemented frontend enquiry forms and admin views</li></ul>"
   },
   {
     "slug": "msit-feedback",
@@ -300,8 +435,22 @@
     "problem": "Student feedback needed to be collected and organized teacher-wise, subject-wise, and semester-wise.",
     "solution": "Built dynamic feedback workflows with structured mappings between students, teachers, subjects, and semesters.",
     "impact": "Enabled organized feedback collection and better academic feedback tracking.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Teacher-wise feedback",
       "Subject-wise feedback",
@@ -317,7 +466,8 @@
     "demo": "https://feedback.msit.edu.in/",
     "repo": "",
     "client": "MSIT",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based feedback platform for collecting student feedback mapped to teachers, subjects, and semesters.</p>\n<h3>The problem</h3>\n<p>Student feedback needed to be collected and organized teacher-wise, subject-wise, and semester-wise.</p>\n<h3>The solution</h3>\n<p>Built dynamic feedback workflows with structured mappings between students, teachers, subjects, and semesters.</p>\n<h3>Impact</h3>\n<p>Enabled organized feedback collection and better academic feedback tracking.</p>\n<h3>Key features</h3>\n<ul><li>Teacher-wise feedback</li><li>Subject-wise feedback</li><li>Semester-wise feedback</li><li>Structured student response management</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed feedback architecture</li><li>Created relational database schema</li><li>Built backend feedback modules</li><li>Implemented student and admin interfaces</li></ul>"
   },
   {
     "slug": "technodisha",
@@ -332,8 +482,22 @@
     "problem": "Scholarship exams needed a smooth online system for creating exams and managing timed assessment sessions.",
     "solution": "Built dynamic exam creation, timing control, backend exam management, and frontend exam-taking workflows.",
     "impact": "Delivered a controlled online scholarship exam experience with dynamic test configuration.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Dynamic exam creation",
       "Timed exam workflow",
@@ -349,7 +513,8 @@
     "demo": "https://technodisha.com/",
     "repo": "",
     "client": "Technodisha",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based exam application created for scholarship testing with dynamic exam timing and configurable exam setup.</p>\n<h3>The problem</h3>\n<p>Scholarship exams needed a smooth online system for creating exams and managing timed assessment sessions.</p>\n<h3>The solution</h3>\n<p>Built dynamic exam creation, timing control, backend exam management, and frontend exam-taking workflows.</p>\n<h3>Impact</h3>\n<p>Delivered a controlled online scholarship exam experience with dynamic test configuration.</p>\n<h3>Key features</h3>\n<ul><li>Dynamic exam creation</li><li>Timed exam workflow</li><li>Scholarship test support</li><li>Smooth exam-taking experience</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed exam architecture</li><li>Created database schema</li><li>Built backend exam modules</li><li>Implemented frontend test experience</li></ul>"
   },
   {
     "slug": "technohere",
@@ -364,8 +529,22 @@
     "problem": "Scholarship exam workflows needed a reliable online platform with timing control and flexible exam creation.",
     "solution": "Implemented dynamic exam setup, timed test workflows, backend exam controls, and frontend exam delivery screens.",
     "impact": "Created a smooth online scholarship exam experience with configurable test management.",
-    "tech": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
-    "stack": ["Laravel", "MySQL", "PHP", "JavaScript", "HTML", "CSS"],
+    "tech": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "stack": [
+      "Laravel",
+      "MySQL",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
     "features": [
       "Dynamic exam creation",
       "Timed scholarship tests",
@@ -381,6 +560,7 @@
     "demo": "https://technohere.com/",
     "repo": "",
     "client": "Technohere",
-    "status": "Completed"
+    "status": "Completed",
+    "desc": "<h3>Overview</h3>\n<p>A Laravel-based online exam application designed for scholarship testing with dynamic timing and exam setup controls.</p>\n<h3>The problem</h3>\n<p>Scholarship exam workflows needed a reliable online platform with timing control and flexible exam creation.</p>\n<h3>The solution</h3>\n<p>Implemented dynamic exam setup, timed test workflows, backend exam controls, and frontend exam delivery screens.</p>\n<h3>Impact</h3>\n<p>Created a smooth online scholarship exam experience with configurable test management.</p>\n<h3>Key features</h3>\n<ul><li>Dynamic exam creation</li><li>Timed scholarship tests</li><li>Backend exam control</li><li>Responsive exam interface</li></ul>\n<h3>My responsibilities</h3>\n<ul class=\"check\"><li>Designed full exam system architecture</li><li>Created database schema</li><li>Built backend exam management</li><li>Implemented frontend exam workflows</li></ul>"
   }
 ]

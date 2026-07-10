@@ -1,19 +1,41 @@
-import { useReveal } from '../hooks/useReveal'
+import { useEffect, useRef, useState } from 'react'
 import AboutImage from './AboutImage'
 
 export default function About({ about }) {
-  const ref = useReveal()
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting)
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -6% 0px',
+      }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="section" id="about">
-      <div className="container reveal" ref={ref}>
+      <div
+        className={`container about-motion${visible ? ' is-visible' : ''}`}
+        ref={ref}
+      >
         <p className="section-tag">About</p>
         <h2 className="section-title">
           A bit <span className="gradient-text">about me</span>
         </h2>
 
         <div className="about-grid">
-          <div className="about-text">
+          <div className="about-text about-slide-left">
             <p className="about-lead">{about.lead}</p>
             {about.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
@@ -35,7 +57,9 @@ export default function About({ about }) {
             </div>
           </div>
 
-          <AboutImage src={about.image} alt={about.imageAlt} />
+          <div className="about-slide-right">
+            <AboutImage src={about.image} alt={about.imageAlt} />
+          </div>
         </div>
       </div>
     </section>

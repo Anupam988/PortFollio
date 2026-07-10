@@ -45,18 +45,45 @@ const WAVE = (() => {
 export default function Services() {
   const ref = useReveal()
   const [active, setActive] = useState(0)
+  const [introStep, setIntroStep] = useState(0)
+  const [introDone, setIntroDone] = useState(false)
   const paused = useRef(false)
   const n = SERVICES.length
 
-  const go = useCallback((dir) => setActive((a) => (a + dir + n) % n), [n])
+  const finishIntro = useCallback(() => {
+    setIntroStep(3)
+    setIntroDone(true)
+  }, [])
+
+  const go = useCallback(
+    (dir) => {
+      finishIntro()
+      setActive((a) => (a + dir + n) % n)
+    },
+    [finishIntro, n]
+  )
+
+  // First-load layer intro: back cards, side cards, then center card.
+  useEffect(() => {
+    const timers = [
+      window.setTimeout(() => setIntroStep(1), 160),
+      window.setTimeout(() => setIntroStep(2), 520),
+      window.setTimeout(() => setIntroStep(3), 900),
+      window.setTimeout(() => setIntroDone(true), 1350),
+    ]
+
+    return () => timers.forEach((timer) => window.clearTimeout(timer))
+  }, [])
 
   // Auto-advance one card at a time (paused while hovering the carousel).
   useEffect(() => {
+    if (!introDone) return undefined
+
     const id = window.setInterval(() => {
       if (!paused.current) setActive((a) => (a + 1) % n)
     }, 3200)
     return () => window.clearInterval(id)
-  }, [n])
+  }, [introDone, n])
 
   // Left / right arrow keys move through the carousel.
   useEffect(() => {
@@ -105,19 +132,36 @@ export default function Services() {
               const abs = Math.abs(o)
               const hidden = abs > 2
               const scale = o === 0 ? 1 : abs === 1 ? 0.8 : 0.64
-              const opacity = hidden ? 0 : o === 0 ? 1 : abs === 1 ? 0.68 : 0.34
+              const ready =
+                introDone ||
+                (introStep >= 3 && abs === 0) ||
+                (introStep >= 2 && abs === 1) ||
+                (introStep >= 1 && abs === 2)
+              const opacity = !ready
+                ? 0
+                : hidden
+                  ? 0
+                  : o === 0
+                    ? 1
+                    : abs === 1
+                      ? 0.68
+                      : 0.34
+              const y = ready ? 0 : abs === 0 ? 44 : 26
               return (
                 <article
                   key={s.title}
                   className={`service-card${o === 0 ? ' active' : ''}`}
                   style={{
-                    transform: `translateX(-50%) translateX(${o * 60}%) scale(${scale}) rotateY(${o * -7}deg)`,
+                    transform: `translateX(-50%) translateX(${o * 60}%) translateY(${y}px) scale(${scale}) rotateY(${o * -7}deg)`,
                     opacity,
                     zIndex: 20 - abs,
                     pointerEvents: hidden ? 'none' : 'auto',
                   }}
                   aria-hidden={hidden ? 'true' : undefined}
-                  onClick={() => setActive(i)}
+                  onClick={() => {
+                    finishIntro()
+                    setActive(i)
+                  }}
                 >
                   <span className="service-wave" aria-hidden="true">
                     <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="a">
@@ -153,7 +197,10 @@ export default function Services() {
               key={s.title}
               type="button"
               className={`c-dot${i === active ? ' on' : ''}`}
-              onClick={() => setActive(i)}
+              onClick={() => {
+                finishIntro()
+                setActive(i)
+              }}
               aria-label={`Show ${s.title}`}
             />
           ))}
